@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://ci6p0kbvrbutw"]
+
+[ext_resource type="Texture2D" uid="uid://cp1dcenq1jos4" path="res://assets/img/MonedaD.png" id="1_meaj0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ffyt4"]
+radius = 37.0
+
+[sub_resource type="Animation" id="Animation_6tldv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_p876q"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qgyxf"]
+_data = {
+"RESET": SubResource("Animation_6tldv"),
+"spin": SubResource("Animation_p876q")
+}
+
+[node name="coin" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ffyt4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qgyxf")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.500001, -0.499999)
+scale = Vector2(4.9375, 4.6875)
+texture = ExtResource("1_meaj0")
+hframes = 5
