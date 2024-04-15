@@ -15,6 +15,7 @@ const CAM_START_POS := Vector2i(576, 324)
 var difficulty
 const MAX_DIFFICULTY : int = 2
 var score : int
+var coins : int
 const SCORE_MODIFIER : int = 10
 var high_score : int
 var speed : float
@@ -36,6 +37,7 @@ func _ready():
 func new_game():
 	#reset variables
 	score = 0
+	coins = 0;
 	show_score()
 	game_running = false
 	get_tree().paused = false
@@ -128,6 +130,9 @@ func hit_obs(body):
 
 func show_score():
 	$HUD.get_node("ScoreLabel").text = "SCORE: " + str(score / SCORE_MODIFIER)
+
+func show_coins():
+	$HUD.get_node("CoinLabel").text = "SCORE: " + str(score / SCORE_MODIFIER)
 
 func check_high_score():
 	if score > high_score:

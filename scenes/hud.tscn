@@ -43,3 +43,12 @@ theme_override_font_sizes/font_size = 40
 text = "HIGH SCORE: "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CoinLabel" type="Label" parent="."]
+offset_top = 45.0
+offset_right = 318.0
+offset_bottom = 99.0
+theme_override_fonts/font = ExtResource("1_xwrdd")
+theme_override_font_sizes/font_size = 40
+text = "COINS: "
+vertical_alignment = 1
