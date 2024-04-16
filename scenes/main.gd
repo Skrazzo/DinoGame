@@ -1,10 +1,12 @@
 extends Node
+@onready var coin_manager = %CoinManager
 
 #preload obstacles
 var stump_scene = preload("res://scenes/stump.tscn")
 var rock_scene = preload("res://scenes/rock.tscn")
 var barrel_scene = preload("res://scenes/barrel.tscn")
 var bird_scene = preload("res://scenes/bird.tscn")
+var coin_scene = preload("res://scenes/coin.tscn")
 var obstacle_types := [stump_scene, rock_scene, barrel_scene]
 var obstacles : Array
 var bird_heights := [200, 390]
@@ -15,7 +17,6 @@ const CAM_START_POS := Vector2i(576, 324)
 var difficulty
 const MAX_DIFFICULTY : int = 2
 var score : int
-var coins : int
 const SCORE_MODIFIER : int = 10
 var high_score : int
 var speed : float
@@ -26,6 +27,7 @@ var screen_size : Vector2i
 var ground_height : int
 var game_running : bool
 var last_obs
+var last_coin
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,8 +39,9 @@ func _ready():
 func new_game():
 	#reset variables
 	score = 0
-	coins = 0;
+	coin_manager.points = 0
 	show_score()
+	show_coins()
 	game_running = false
 	get_tree().paused = false
 	difficulty = 0
@@ -77,6 +80,7 @@ func _process(delta):
 		#update score
 		score += speed
 		show_score()
+		show_coins()
 		
 		#update ground position
 		if $Camera2D.position.x - $Ground.position.x > screen_size.x * 1.5:
@@ -127,12 +131,16 @@ func remove_obs(obs):
 func hit_obs(body):
 	if body.name == "Dino":
 		game_over()
+		
+#func generate_coins();
+	#if last_coin.position.x < score + randi_range(300, 500):
+		#
 
 func show_score():
 	$HUD.get_node("ScoreLabel").text = "SCORE: " + str(score / SCORE_MODIFIER)
-
+	
 func show_coins():
-	$HUD.get_node("CoinLabel").text = "SCORE: " + str(score / SCORE_MODIFIER)
+	$HUD.get_node("CoinLabel").text = "COINS: " + str(coin_manager.points)
 
 func check_high_score():
 	if score > high_score:
