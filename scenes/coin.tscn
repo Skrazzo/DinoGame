@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://dju4ybcvy1a5q"]
+[gd_scene load_steps=14 format=3 uid="uid://dju4ybcvy1a5q"]
 
+[ext_resource type="Script" path="res://scenes/coin.gd" id="1_dy1lf"]
 [ext_resource type="Texture2D" uid="uid://dllfvxaqfwdyp" path="res://assets/img/coin2_20x20.png" id="1_urebn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cix88"]
@@ -73,9 +74,23 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hviw"]
+size = Vector2(18, 18)
+
+[node name="Coin" type="Area2D"]
+texture_filter = 1
+scale = Vector2(2, 2)
+script = ExtResource("1_dy1lf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -1)
 sprite_frames = SubResource("SpriteFrames_aijit")
-frame_progress = 0.203778
+autoplay = "default"
+frame_progress = 0.742366
 centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9, 9)
+shape = SubResource("RectangleShape2D_4hviw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
