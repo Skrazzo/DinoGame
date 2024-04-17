@@ -10,10 +10,20 @@ config_version=5
 
 [application]
 
-config/name="dino_run_tut"
-run/main_scene="res://scenes/main.tscn"
+config/name="DinoGame"
+run/main_scene="res://scenes/shop.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Utility="*res://Scripts/Utility.gd"
+UserData="*res://scenes/UserDataHandler.gd"
+InventorySchema="*res://Scripts/InventorySchema.gd"
+
+[display]
+
+window/vsync/vsync_mode=0
 
 [input]
 
