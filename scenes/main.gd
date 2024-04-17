@@ -1,12 +1,15 @@
 extends Node
+
 @onready var coin_manager = %CoinManager
 #preload obstacles
 var stump_scene = preload("res://scenes/stump.tscn")
 var rock_scene = preload("res://scenes/rock.tscn")
 var barrel_scene = preload("res://scenes/barrel.tscn")
 var bird_scene = preload("res://scenes/bird.tscn")
+var coin_scene = preload("res://scenes/coin.tscn")
 var obstacle_types := [stump_scene, rock_scene, barrel_scene]
 var obstacles : Array
+var coins : Array
 var bird_heights := [200, 390]
 
 #game variables
@@ -25,6 +28,7 @@ var screen_size : Vector2i
 var ground_height : int
 var game_running : bool
 var last_obs
+var TotalCoins = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,6 +36,13 @@ func _ready():
 	ground_height = $Ground.get_node("Sprite2D").texture.get_height()
 	$GameOver.get_node("Button").pressed.connect(new_game)
 	new_game()
+	
+	var coin_manager = get_node("/root/Main/CoinManager")
+	if coin_manager:
+		print("yes")
+	else:
+		print("CoinManager node not found")
+
 
 func new_game():
 	#reset variables
@@ -77,7 +88,12 @@ func _process(delta):
 		#update score
 		score += speed
 		show_score()
+		
+		#update coins
 		show_coins()
+		
+		#update coins spawn
+		generate_coins()
 		
 		#update ground position
 		if $Camera2D.position.x - $Ground.position.x > screen_size.x * 1.5:
@@ -128,6 +144,22 @@ func remove_obs(obs):
 func hit_obs(body):
 	if body.name == "Dino":
 		game_over()
+		
+func generate_coins():
+	if randf() < 0.03:
+		var coin_instance = coin_scene.instantiate()
+		var coin = coin_instance as Node2D
+		var coin_x : int = screen_size.x + score + 100
+		var coin_y : int = screen_size.y - ground_height - 50
+		coin.position = Vector2(coin_x, coin_y)
+		add_child(coin)
+		coins.append(coin)
+
+func remove_coin(coin):
+	coin.queue_free()
+	coins.erase(coin)
+	TotalCoins += 1
+	print(TotalCoins)
 
 func show_score():
 	$HUD.get_node("ScoreLabel").text = "SCORE: " + str(score / SCORE_MODIFIER)
