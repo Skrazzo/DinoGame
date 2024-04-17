@@ -1,5 +1,5 @@
 extends Node;
-
+@onready var coin_manager = %CoinManager;
 #preload obstacles
 var stump_scene = preload("res://scenes/stump.tscn");
 var rock_scene = preload("res://scenes/rock.tscn");
@@ -38,8 +38,10 @@ func _ready():
 func new_game():
 	#reset variables
 	score = 0;
+	coin_manager.coins = 0;
 	show_score();
 	check_high_score();
+	show_coins();
 	game_running = false;
 	get_tree().paused = false;
 	difficulty = 0;
@@ -80,6 +82,7 @@ func _process(delta):
 		score += speed;
 		show_score();
 		check_high_score();
+		show_coins();
 		
 		#update ground position
 		if $Camera2D.position.x - $Ground.position.x > screen_size.x * 1.5:
@@ -133,6 +136,9 @@ func hit_obs(body):
 
 func show_score():
 	$HUD.get_node("ScoreLabel").text = "SCORE: " + str(int(score / SCORE_MODIFIER));
+	
+func show_coins():
+	$HUD.get_node("CoinLabel").text = "COINS: " + str(coin_manager.coins);
 
 func check_high_score():
 	if score > high_score:

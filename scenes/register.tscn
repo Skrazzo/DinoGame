@@ -1,0 +1,177 @@
+[gd_scene load_steps=8 format=3 uid="uid://v3lih7dwwimj"]
+
+[ext_resource type="Texture2D" uid="uid://c3geptfawefln" path="res://assets/ShopAssets/backgroundshop 2.png" id="1_b3f7o"]
+[ext_resource type="Texture2D" uid="uid://d2jty5vpvpx3b" path="res://assets/ShopAssets/sign 2.png" id="2_yebcr"]
+[ext_resource type="FontFile" uid="uid://s15272omc2m3" path="res://assets/fonts/retro.ttf" id="3_wljbb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6n74x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtmpn"]
+bg_color = Color(0.423529, 0.317647, 0.2, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.345098, 0.219608, 0.14902, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5gh6"]
+content_margin_left = 8.0
+bg_color = Color(0.294118, 0.141176, 0.0588235, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.729412, 0.466667, 0.0196078, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ij5l"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.345098, 0.219608, 0.14902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.27451, 0.168627, 0.113725, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Register" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.721569)
+self_modulate = Color(1, 1, 1, 0.854902)
+material = SubResource("ShaderMaterial_6n74x")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_b3f7o")
+
+[node name="Login-border" type="Panel" parent="Background"]
+top_level = true
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -174.0
+offset_top = -233.0
+offset_right = 174.0
+offset_bottom = 233.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vtmpn")
+
+[node name="TextFrame" type="TextureRect" parent="Background/Login-border"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.0
+offset_right = 81.0
+offset_bottom = 77.0
+grow_horizontal = 2
+texture = ExtResource("2_yebcr")
+expand_mode = 1
+
+[node name="Login-text" type="RichTextLabel" parent="Background/Login-border/TextFrame"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.5
+offset_top = -7.5
+offset_right = 64.5
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("3_wljbb")
+theme_override_font_sizes/normal_font_size = 20
+text = "REGISTER"
+
+[node name="GridContainer" type="GridContainer" parent="Background/Login-border"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.5
+offset_top = -102.0
+offset_right = 120.5
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/v_separation = 20
+
+[node name="EmailInput" type="LineEdit" parent="Background/Login-border/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_wljbb")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_v5gh6")
+placeholder_text = "E-mail"
+
+[node name="UsernameInput" type="LineEdit" parent="Background/Login-border/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wljbb")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_v5gh6")
+placeholder_text = "Username"
+
+[node name="PasswordInput" type="LineEdit" parent="Background/Login-border/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wljbb")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_v5gh6")
+placeholder_text = "Password"
+virtual_keyboard_type = 6
+secret = true
+
+[node name="PasswordConfInput" type="LineEdit" parent="Background/Login-border/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wljbb")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_v5gh6")
+placeholder_text = "Re-password"
+virtual_keyboard_type = 6
+secret = true
+
+[node name="Button" type="Button" parent="Background/Login-border"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -59.0
+offset_top = -107.0
+offset_right = 59.0
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_wljbb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8ij5l")
+text = "REGISTER"
