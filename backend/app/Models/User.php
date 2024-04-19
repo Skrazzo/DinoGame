@@ -30,6 +30,9 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
+        'email_verified_at',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -43,5 +46,13 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function stat(){
+        return $this->hasOne(\App\Models\Stats::class);
+    }
+
+    public function shop(){
+        return $this->hasOne(\App\Models\Shop::class);
     }
 }
