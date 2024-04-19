@@ -63,7 +63,15 @@ class UserController extends Controller
                 // create shop record for a user
                 $user->shop()->create([]);
 
-                return response()->json(['response' => 'User created successfully']);
+                // creating token
+                $token = Str::random(35);
+                
+                // saving token in db
+                $user = User::where('email', $req->email)->first();
+                $user->token = $token;
+                $user->save();
+
+                return response()->json(['response' => 'User created successfully', 'token' => $token]);
             }
         }
 
