@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Stats;
 use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
@@ -29,6 +30,9 @@ class loggedIn
         if(!$user){
             return response()->json(['response' => 'Invalid token'], 403);
         }
+
+        $request['user'] = $user;
+        $request['user']['coins'] = $user->stat()->first()->coins;
 
         return $next($request);
     }
