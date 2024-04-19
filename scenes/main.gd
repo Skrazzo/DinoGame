@@ -27,6 +27,7 @@ var screen_size : Vector2i;
 var ground_height : int;
 var game_running : bool;
 var last_obs;
+var lives = 3
 
 # Called when the node enters the scene tree for the first time.	
 func _ready():
@@ -37,6 +38,7 @@ func _ready():
 
 func new_game():
 	#reset variables
+	lives = 3
 	score = 0;
 	coin_manager.coins = 0;
 	show_score();
@@ -132,7 +134,13 @@ func remove_obs(obs):
 	
 func hit_obs(body):
 	if body.name == "Dino":
-		game_over();
+		# Decrement lives
+		lives -= 1
+		# Update hearts display
+		$Hearts.update_hearts_display(lives)
+		# Check if no lives remaining
+		if lives <= 0:
+			game_over()
 
 func show_score():
 	$HUD.get_node("ScoreLabel").text = "SCORE: " + str(int(score / SCORE_MODIFIER));

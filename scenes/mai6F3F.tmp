@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bju4jxwr7a0pg"]
+[gd_scene load_steps=12 format=3 uid="uid://bju4jxwr7a0pg"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_d36gk"]
 [ext_resource type="PackedScene" uid="uid://bpkphu8qj137m" path="res://scenes/bg.tscn" id="1_qy3kl"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://scenes/UserDataHandler.gd" id="7_drti8"]
 [ext_resource type="PackedScene" uid="uid://dju4ybcvy1a5q" path="res://scenes/coin.tscn" id="7_kne81"]
 [ext_resource type="Script" path="res://scenes/coin_manager.gd" id="8_fmuii"]
-[ext_resource type="Script" path="res://scenes/Hearts.gd" id="10_74q5g"]
 [ext_resource type="Texture2D" uid="uid://bwg767l4g7mmo" path="res://assets/img/HealthUI_full.png" id="10_g1g16"]
 [ext_resource type="Texture2D" uid="uid://brvbd66alnwyl" path="res://assets/img/HealthUI_empty.png" id="11_tomjp"]
 
@@ -74,7 +73,6 @@ position = Vector2(607, 472)
 position = Vector2(647, 472)
 
 [node name="Hearts" type="CanvasLayer" parent="."]
-script = ExtResource("10_74q5g")
 
 [node name="HeartsFull" type="TextureRect" parent="Hearts"]
 anchors_preset = 3
