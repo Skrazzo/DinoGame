@@ -1,0 +1,119 @@
+[gd_scene load_steps=9 format=3 uid="uid://d4j2hyrl8dl2q"]
+
+[ext_resource type="Script" path="res://scenes/shop_loader.gd" id="1_miw6h"]
+[ext_resource type="Texture2D" uid="uid://8dj67nly0q71" path="res://assets/img/shop/backgroundshop 2.png" id="1_s12br"]
+[ext_resource type="Texture2D" uid="uid://ddu470myq061c" path="res://assets/img/shop/Rectangle 1.png" id="2_x5yb6"]
+[ext_resource type="Texture2D" uid="uid://jechdrmy08ty" path="res://assets/img/shop/sign 2.png" id="3_8ymbm"]
+[ext_resource type="Texture2D" uid="uid://cyaaoq0e387pg" path="res://assets/img/shop/SHOP.png" id="4_ngn88"]
+[ext_resource type="Texture2D" uid="uid://b24ajj5krdpuq" path="res://assets/img/shop/Sw762l 3.png" id="5_gnju7"]
+[ext_resource type="Texture2D" uid="uid://bwwy8mf1fn3oa" path="res://assets/img/shop/Rectangle 10.png" id="6_osvbh"]
+[ext_resource type="Texture2D" uid="uid://oyvpv8t54k5w" path="res://assets/img/shop/image 5.png" id="7_8a7oa"]
+
+[node name="Shop" type="Node2D"]
+script = ExtResource("1_miw6h")
+
+[node name="shop background" type="Sprite2D" parent="."]
+position = Vector2(-9, 0)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("1_s12br")
+centered = false
+
+[node name="shop board" type="Sprite2D" parent="."]
+position = Vector2(577, 325)
+texture = ExtResource("2_x5yb6")
+
+[node name="Shop Sign" type="Sprite2D" parent="."]
+position = Vector2(570, 110)
+texture = ExtResource("3_8ymbm")
+
+[node name="Text" type="Sprite2D" parent="Shop Sign"]
+position = Vector2(3, 10)
+texture = ExtResource("4_ngn88")
+
+[node name="Vine" type="Sprite2D" parent="Shop Sign"]
+position = Vector2(-92, 7)
+texture = ExtResource("5_gnju7")
+
+[node name="Vine2" type="Sprite2D" parent="Shop Sign"]
+position = Vector2(95, 8)
+texture = ExtResource("5_gnju7")
+
+[node name="item window" type="Sprite2D" parent="."]
+position = Vector2(289, 241)
+scale = Vector2(1.005, 0.78)
+texture = ExtResource("6_osvbh")
+
+[node name="buy button" type="Sprite2D" parent="item window"]
+position = Vector2(-0.995019, 96.1539)
+scale = Vector2(1.04273, 1.27854)
+texture = ExtResource("7_8a7oa")
+
+[node name="item window2" type="Sprite2D" parent="."]
+position = Vector2(480.255, 241)
+scale = Vector2(1.005, 0.78)
+texture = ExtResource("6_osvbh")
+
+[node name="buy button" type="Sprite2D" parent="item window2"]
+position = Vector2(-0.995019, 96.1539)
+scale = Vector2(1.04273, 1.27854)
+texture = ExtResource("7_8a7oa")
+
+[node name="item window3" type="Sprite2D" parent="."]
+position = Vector2(667, 241)
+scale = Vector2(1.005, 0.78)
+texture = ExtResource("6_osvbh")
+
+[node name="buy button" type="Sprite2D" parent="item window3"]
+position = Vector2(-0.995019, 96.1539)
+scale = Vector2(1.04273, 1.27854)
+texture = ExtResource("7_8a7oa")
+
+[node name="item window4" type="Sprite2D" parent="."]
+position = Vector2(862, 241)
+scale = Vector2(1.005, 0.78)
+texture = ExtResource("6_osvbh")
+
+[node name="buy button" type="Sprite2D" parent="item window4"]
+position = Vector2(-0.995019, 96.1539)
+scale = Vector2(1.04273, 1.27854)
+texture = ExtResource("7_8a7oa")
+
+[node name="item window5" type="Sprite2D" parent="."]
+position = Vector2(289, 431)
+scale = Vector2(1.005, 0.78)
+texture = ExtResource("6_osvbh")
+
+[node name="buy button" type="Sprite2D" parent="item window5"]
+position = Vector2(-0.995019, 96.1539)
+scale = Vector2(1.04273, 1.27854)
+texture = ExtResource("7_8a7oa")
+
+[node name="item window6" type="Sprite2D" parent="."]
+position = Vector2(480.255, 431)
+scale = Vector2(1.005, 0.78)
+texture = ExtResource("6_osvbh")
+
+[node name="buy button" type="Sprite2D" parent="item window6"]
+position = Vector2(-0.995019, 96.1539)
+scale = Vector2(1.04273, 1.27854)
+texture = ExtResource("7_8a7oa")
+
+[node name="item window7" type="Sprite2D" parent="."]
+position = Vector2(667, 431)
+scale = Vector2(1.005, 0.78)
+texture = ExtResource("6_osvbh")
+
+[node name="buy button" type="Sprite2D" parent="item window7"]
+position = Vector2(-0.995019, 96.1539)
+scale = Vector2(1.04273, 1.27854)
+texture = ExtResource("7_8a7oa")
+
+[node name="item window8" type="Sprite2D" parent="."]
+position = Vector2(862, 431)
+scale = Vector2(1.005, 0.78)
+texture = ExtResource("6_osvbh")
+
+[node name="buy button" type="Sprite2D" parent="item window8"]
+position = Vector2(-0.995019, 96.1539)
+scale = Vector2(1.04273, 1.27854)
+texture = ExtResource("7_8a7oa")
