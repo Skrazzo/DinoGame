@@ -163,6 +163,21 @@ sprite_frames = SubResource("SpriteFrames_6wmvf")
 animation = &"duck"
 autoplay = "idle"
 
+[node name="GrassPart" type="CPUParticles2D" parent="AnimatedSprite2D"]
+position = Vector2(-6.125, 8)
+rotation = -2.0944
+amount = 16
+emission_shape = 1
+emission_sphere_radius = 3.0
+gravity = Vector2(0, 100)
+initial_velocity_min = 15.0
+initial_velocity_max = 30.0
+scale_amount_min = 10.0
+scale_amount_max = 15.0
+color = Color(0.635294, 0.780392, 0.345098, 1)
+hue_variation_min = 0.1
+hue_variation_max = 1.0
+
 [node name="RunCol" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_whux2")
