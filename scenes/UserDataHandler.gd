@@ -30,6 +30,9 @@ func SetOnRequestFinished(funct):
 
 func IsInRequest():
 	return _inRequest;
+	
+func WaitForRequestFinished():
+	while _inRequest: pass;
 
 func Register(username, password):
 	Utility.proper_assert( # maybe dont do this

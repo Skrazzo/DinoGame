@@ -21,7 +21,7 @@ var speed : float;
 const START_SPEED : float = 10.0 / (1.0/60.0);
 const MAX_SPEED : float = 100.0 / (1.0/60.0);
 const SPEED_MODIFIER : int = 100;
-const DIFFICULTY_MODIFIER : int = 3000 * 10;
+const DIFFICULTY_MODIFIER : int = 3000 * SCORE_MODIFIER;
 const OBS_FALLOF_X : int = 0.3;
 var screen_size : Vector2i;
 var ground_height : int;
