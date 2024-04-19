@@ -39,8 +39,7 @@ func new_game():
 	#reset variables
 	score = 0;
 	coin_manager.coins = 0;
-	show_score();
-	check_high_score();
+	update_score();
 	show_coins();
 	game_running = false;
 	get_tree().paused = false;
@@ -80,8 +79,7 @@ func _process(delta):
 		
 		#update score
 		score += speed;
-		show_score();
-		check_high_score();
+		update_score();
 		show_coins();
 		
 		#update ground position
@@ -133,23 +131,22 @@ func remove_obs(obs):
 func hit_obs(body):
 	if body.name == "Dino":
 		game_over();
-
-func show_score():
-	$HUD.get_node("ScoreLabel").text = "SCORE: " + str(int(score / SCORE_MODIFIER));
 	
 func show_coins():
 	$HUD.get_node("CoinLabel").text = "COINS: " + str(coin_manager.coins);
 
-func check_high_score():
+func update_score():
 	if score > high_score:
 		high_score = score;
+		
+	$HUD.get_node("ScoreLabel").text = "SCORE: " + str(int(score / SCORE_MODIFIER));
 	$HUD.get_node("HighScoreLabel").text = "HIGH SCORE: " + str(int(high_score / SCORE_MODIFIER));
 
 func adjust_difficulty():
 	difficulty = score / DIFFICULTY_MODIFIER;
 	if difficulty > MAX_DIFFICULTY:
 		difficulty = MAX_DIFFICULTY;
-	print(difficulty, " ", score, " ", DIFFICULTY_MODIFIER)
+	#print(difficulty, " ", score, " ", DIFFICULTY_MODIFIER)
 
 func game_over():
 	get_tree().paused = true;

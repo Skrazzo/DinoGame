@@ -38,18 +38,18 @@ texture = ExtResource("5_gnju7")
 position = Vector2(95, 8)
 texture = ExtResource("5_gnju7")
 
-[node name="item window" type="Sprite2D" parent="."]
-position = Vector2(289, 241)
+[node name="item window1" type="Sprite2D" parent="."]
+position = Vector2(289, 249)
 scale = Vector2(1.005, 0.78)
 texture = ExtResource("6_osvbh")
 
-[node name="buy button" type="Sprite2D" parent="item window"]
+[node name="buy button" type="Sprite2D" parent="item window1"]
 position = Vector2(-0.995019, 96.1539)
 scale = Vector2(1.04273, 1.27854)
 texture = ExtResource("7_8a7oa")
 
 [node name="item window2" type="Sprite2D" parent="."]
-position = Vector2(480.255, 241)
+position = Vector2(480.255, 249)
 scale = Vector2(1.005, 0.78)
 texture = ExtResource("6_osvbh")
 
@@ -59,7 +59,7 @@ scale = Vector2(1.04273, 1.27854)
 texture = ExtResource("7_8a7oa")
 
 [node name="item window3" type="Sprite2D" parent="."]
-position = Vector2(667, 241)
+position = Vector2(667, 249)
 scale = Vector2(1.005, 0.78)
 texture = ExtResource("6_osvbh")
 
@@ -69,7 +69,7 @@ scale = Vector2(1.04273, 1.27854)
 texture = ExtResource("7_8a7oa")
 
 [node name="item window4" type="Sprite2D" parent="."]
-position = Vector2(862, 241)
+position = Vector2(862, 249)
 scale = Vector2(1.005, 0.78)
 texture = ExtResource("6_osvbh")
 
@@ -79,7 +79,7 @@ scale = Vector2(1.04273, 1.27854)
 texture = ExtResource("7_8a7oa")
 
 [node name="item window5" type="Sprite2D" parent="."]
-position = Vector2(289, 431)
+position = Vector2(289, 442)
 scale = Vector2(1.005, 0.78)
 texture = ExtResource("6_osvbh")
 
@@ -89,7 +89,7 @@ scale = Vector2(1.04273, 1.27854)
 texture = ExtResource("7_8a7oa")
 
 [node name="item window6" type="Sprite2D" parent="."]
-position = Vector2(480.255, 431)
+position = Vector2(480.255, 442)
 scale = Vector2(1.005, 0.78)
 texture = ExtResource("6_osvbh")
 
@@ -99,7 +99,7 @@ scale = Vector2(1.04273, 1.27854)
 texture = ExtResource("7_8a7oa")
 
 [node name="item window7" type="Sprite2D" parent="."]
-position = Vector2(667, 431)
+position = Vector2(667, 442)
 scale = Vector2(1.005, 0.78)
 texture = ExtResource("6_osvbh")
 
@@ -109,7 +109,7 @@ scale = Vector2(1.04273, 1.27854)
 texture = ExtResource("7_8a7oa")
 
 [node name="item window8" type="Sprite2D" parent="."]
-position = Vector2(862, 431)
+position = Vector2(862, 442)
 scale = Vector2(1.005, 0.78)
 texture = ExtResource("6_osvbh")
 
