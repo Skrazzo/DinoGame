@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Skins;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,11 +14,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        Skins::create([
+            'name' => 'Nico',
+            'price' => 100
+        ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        Skins::create([
+            'name' => 'Olaf',
+            'price' => 100
+        ]);
+
+        Skins::create([
+            'name' => 'Sena',
+            'price' => 100
+        ]);
+
+        Skins::create([
+            'name' => 'Tard',
+            'price' => 100
         ]);
     }
 }
