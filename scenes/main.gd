@@ -27,8 +27,8 @@ var screen_size : Vector2i;
 var ground_height : int;
 var game_running : bool;
 var last_obs;
-var lives = 3
-
+var max_lives:int
+var lives:int
 # Called when the node enters the scene tree for the first time.	
 func _ready():
 	screen_size = get_window().size;
@@ -38,27 +38,27 @@ func _ready():
 
 func new_game():
 	#reset variables
-	lives = 3
 	score = 0;
 	coin_manager.coins = 0;
+	max_lives = $Hearts.max_lives
+	lives = max_lives
+	$Hearts.update_hearts_display(max_lives)
+	$Hearts.heartFull.show()
 	show_score();
 	check_high_score();
 	show_coins();
 	game_running = false;
 	get_tree().paused = false;
 	difficulty = 0;
-	
 	#delete all obstacles
 	for obs in obstacles:
 		obs.queue_free();
 	obstacles.clear();
-	
 	#reset the nodes
 	$Dino.position = DINO_START_POS;
 	$Dino.velocity = Vector2i(0, 0);
 	$Camera2D.position = CAM_START_POS;
 	$Ground.position = Vector2i(0, 0);
-	
 	#reset hud and game over screen
 	$HUD.get_node("StartLabel").show();
 	$GameOver.hide();
@@ -134,11 +134,8 @@ func remove_obs(obs):
 	
 func hit_obs(body):
 	if body.name == "Dino":
-		# Decrement lives
 		lives -= 1
-		# Update hearts display
 		$Hearts.update_hearts_display(lives)
-		# Check if no lives remaining
 		if lives <= 0:
 			game_over()
 
