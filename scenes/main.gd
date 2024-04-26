@@ -29,6 +29,7 @@ var ground_height : int
 var game_running : bool
 var last_obs
 var TotalCoins = 0;
+var obs_x_coin
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,12 +37,6 @@ func _ready():
 	ground_height = $Ground.get_node("Sprite2D").texture.get_height()
 	$GameOver.get_node("Button").pressed.connect(new_game)
 	new_game()
-	
-	var coin_manager = get_node("/root/Main/CoinManager")
-	if coin_manager:
-		print("yes")
-	else:
-		print("CoinManager node not found")
 
 
 func new_game():
@@ -92,9 +87,6 @@ func _process(delta):
 		#update coins
 		show_coins()
 		
-		#update coins spawn
-		generate_coins()
-		
 		#update ground position
 		if $Camera2D.position.x - $Ground.position.x > screen_size.x * 1.5:
 			$Ground.position.x += screen_size.x
@@ -103,13 +95,17 @@ func _process(delta):
 		for obs in obstacles:
 			if obs.position.x < ($Camera2D.position.x - screen_size.x):
 				remove_obs(obs)
+
+		for coin in coins:
+			if is_instance_valid(coin) and coin.position.x < ($Camera2D.position.x - screen_size.x):
+				remove_coin(coin)
 	else:
 		if Input.is_action_pressed("game_up"):
 			game_running = true
 			$HUD.get_node("StartLabel").hide()
 
 func generate_obs():
-	#generate ground obstacles
+	# Generate ground obstacles
 	if obstacles.is_empty() or last_obs.position.x < score + randi_range(300, 500):
 		var obs_type = obstacle_types[randi() % obstacle_types.size()]
 		var obs
@@ -119,17 +115,33 @@ func generate_obs():
 			var obs_height = obs.get_node("Sprite2D").texture.get_height()
 			var obs_scale = obs.get_node("Sprite2D").scale
 			var obs_x : int = screen_size.x + score + 100 + (i * 100)
+			obs_x_coin = obs_x
 			var obs_y : int = screen_size.y - ground_height - (obs_height * obs_scale.y / 2) + 5
 			last_obs = obs
 			add_obs(obs, obs_x, obs_y)
-		#additionally random chance to spawn a bird
+
+		#coin generation
+		var num_coins = randi_range(0, 3)
+		var spacing = 50
+		var start_x = obs_x_coin + 300
+		for x in range(num_coins):
+			var coin_instance = coin_scene.instantiate()
+			var coin = coin_instance as Node2D
+			var coin_x : int = start_x + x * spacing
+			var coin_y : int = screen_size.y - ground_height - 50
+			coin.position = Vector2(coin_x, coin_y)
+			add_child(coin)
+			coins.append(coin)
+			
+		# Additionally random chance to spawn a bird
 		if difficulty == MAX_DIFFICULTY:
-			if (randi() % 2) == 0:
-				#generate bird obstacles
+			if randi() % 2 == 0:
+				# Generate bird obstacles
 				obs = bird_scene.instantiate()
 				var obs_x : int = screen_size.x + score + 100
 				var obs_y : int = bird_heights[randi() % bird_heights.size()]
 				add_obs(obs, obs_x, obs_y)
+
 
 func add_obs(obs, x, y):
 	obs.position = Vector2i(x, y)
@@ -145,21 +157,9 @@ func hit_obs(body):
 	if body.name == "Dino":
 		game_over()
 		
-func generate_coins():
-	if randf() < 0.03:
-		var coin_instance = coin_scene.instantiate()
-		var coin = coin_instance as Node2D
-		var coin_x : int = screen_size.x + score + 100
-		var coin_y : int = screen_size.y - ground_height - 50
-		coin.position = Vector2(coin_x, coin_y)
-		add_child(coin)
-		coins.append(coin)
-
 func remove_coin(coin):
 	coin.queue_free()
 	coins.erase(coin)
-	TotalCoins += 1
-	print(TotalCoins)
 
 func show_score():
 	$HUD.get_node("ScoreLabel").text = "SCORE: " + str(score / SCORE_MODIFIER)
