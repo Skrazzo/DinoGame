@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://lyf4a3sklk1o" path="res://scenes/hud.tscn" id="5_cgpie"]
 [ext_resource type="PackedScene" uid="uid://lotwuige1aee" path="res://scenes/game_over.tscn" id="6_6n2u1"]
 [ext_resource type="Script" path="res://scenes/UserDataHandler.gd" id="7_drti8"]
-[ext_resource type="PackedScene" uid="uid://dju4ybcvy1a5q" path="res://scenes/coin.tscn" id="7_kne81"]
+[ext_resource type="PackedScene" path="res://scenes/coin.tscn" id="7_kne81"]
 [ext_resource type="Script" path="res://scenes/coin_manager.gd" id="8_fmuii"]
 
 [node name="Main" type="Node"]
@@ -46,7 +46,6 @@ position = Vector2(576, 324)
 process_mode = 2
 
 [node name="CoinManager" type="Node" parent="."]
-unique_name_in_owner = true
 script = ExtResource("8_fmuii")
 
 [node name="Coin" parent="." instance=ExtResource("7_kne81")]

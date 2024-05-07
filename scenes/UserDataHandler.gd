@@ -153,7 +153,7 @@ func Completed_RecordRun(result, response_code, headers, body):
 func Completed_PurchaseItem(result, response_code, headers, body):
 	pass;
 
-func _init():
+func __init():
 	var err = 0
 	var http = HTTPClient.new() # Create the Client.
 

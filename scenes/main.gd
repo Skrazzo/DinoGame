@@ -27,7 +27,6 @@ var screen_size : Vector2i;
 var ground_height : int;
 var game_running : bool;
 var last_obs;
-
 # Called when the node enters the scene tree for the first time.	
 func _ready():
 	screen_size = get_window().size;
