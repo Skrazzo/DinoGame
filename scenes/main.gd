@@ -13,23 +13,27 @@ var coins : Array
 var bird_heights := [200, 390]
 
 #game variables
-const DINO_START_POS := Vector2i(150, 485)
-const CAM_START_POS := Vector2i(576, 324)
-var difficulty
-const MAX_DIFFICULTY : int = 2
-var score : int
-const SCORE_MODIFIER : int = 10
-var high_score : int
-var speed : float
-const START_SPEED : float = 10.0
-const MAX_SPEED : int = 25
-const SPEED_MODIFIER : int = 5000
-var screen_size : Vector2i
-var ground_height : int
-var game_running : bool
-var last_obs
+const DINO_START_POS := Vector2i(150, 485);
+const CAM_START_POS := Vector2i(576, 324);
+var difficulty : int;
+const MAX_DIFFICULTY : int = 3;
+var score : float;
+const SCORE_MODIFIER : int = 10;
+var high_score : float;
+var speed : float;
+const START_SPEED : float = 10.0 / (1.0/60.0);
+const MAX_SPEED : float = 100.0 / (1.0/60.0);
+const SPEED_MODIFIER : int = 100;
+const DIFFICULTY_MODIFIER : int = 3000 * 10;
+const OBS_FALLOF_X : int = 0.3;
+var screen_size : Vector2i;
+var ground_height : int;
+var game_running : bool;
+var last_obs;
 var TotalCoins = 0;
 var obs_x_coin
+var max_lives:int
+var lives:int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -178,7 +182,8 @@ func check_high_score():
 	if score > high_score:
 		high_score = score;
 	$HUD.get_node("HighScoreLabel").text = "HIGH SCORE: " + str(int(high_score / SCORE_MODIFIER));
-
+	
+	
 func adjust_difficulty():
 	difficulty = score / DIFFICULTY_MODIFIER;
 	if difficulty > MAX_DIFFICULTY:
