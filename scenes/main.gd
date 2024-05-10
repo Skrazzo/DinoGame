@@ -33,52 +33,55 @@ var obs_x_coin
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	screen_size = get_window().size
-	ground_height = $Ground.get_node("Sprite2D").texture.get_height()
-	$GameOver.get_node("Button").pressed.connect(new_game)
-	new_game()
+	screen_size = get_window().size;
+	ground_height = $Ground.get_node("Sprite2D").texture.get_height();
+	$GameOver.get_node("Button").pressed.connect(new_game);
+	new_game();
 
 
 func new_game():
 	#reset variables
-	score = 0
-	coin_manager.coins = 0
-	show_score()
-	show_coins()
-	game_running = false
-	get_tree().paused = false
-	difficulty = 0
-	
+	score = 0;
+	coin_manager.coins = 0;
+	max_lives = $Hearts.max_lives
+	lives = max_lives
+	$Hearts.update_hearts_display(max_lives)
+	$Hearts.heartFull.show()
+	show_score();
+	check_high_score();
+	show_coins();
+	game_running = false;
+	get_tree().paused = false;
+	difficulty = 0;
 	#delete all obstacles
 	for obs in obstacles:
-		obs.queue_free()
-	obstacles.clear()
-	
+		obs.queue_free();
+	obstacles.clear();
 	#reset the nodes
-	$Dino.position = DINO_START_POS
-	$Dino.velocity = Vector2i(0, 0)
-	$Camera2D.position = CAM_START_POS
-	$Ground.position = Vector2i(0, 0)
-	
+	$Dino.position = DINO_START_POS;
+	$Dino.velocity = Vector2i(0, 0);
+	$Camera2D.position = CAM_START_POS;
+	$Ground.position = Vector2i(0, 0);
 	#reset hud and game over screen
-	$HUD.get_node("StartLabel").show()
-	$GameOver.hide()
+	$HUD.get_node("StartLabel").show();
+	$GameOver.hide();
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if game_running:
 		#speed up and adjust difficulty
-		speed = START_SPEED + score / SPEED_MODIFIER
+		speed = START_SPEED + score / SPEED_MODIFIER;
 		if speed > MAX_SPEED:
-			speed = MAX_SPEED
-		adjust_difficulty()
+			speed = MAX_SPEED;
+		speed *= delta;
+		adjust_difficulty();
 		
 		#generate obstacles
-		generate_obs()
+		generate_obs();
 		
 		#move dino and camera
-		$Dino.position.x += speed
-		$Camera2D.position.x += speed
+		$Dino.position.x += speed;
+		$Camera2D.position.x += speed;
 		
 		#update score
 		score += speed
@@ -89,7 +92,7 @@ func _process(delta):
 		
 		#update ground position
 		if $Camera2D.position.x - $Ground.position.x > screen_size.x * 1.5:
-			$Ground.position.x += screen_size.x
+			$Ground.position.x += screen_size.x;
 			
 		#remove obstacles that have gone off screen
 		for obs in obstacles:
@@ -101,8 +104,8 @@ func _process(delta):
 				remove_coin(coin)
 	else:
 		if Input.is_action_pressed("game_up"):
-			game_running = true
-			$HUD.get_node("StartLabel").hide()
+			game_running = true;
+			$HUD.get_node("StartLabel").hide();
 
 func generate_obs():
 	# Generate ground obstacles
@@ -144,41 +147,45 @@ func generate_obs():
 
 
 func add_obs(obs, x, y):
-	obs.position = Vector2i(x, y)
-	obs.body_entered.connect(hit_obs)
-	add_child(obs)
-	obstacles.append(obs)
+	obs.position = Vector2i(x, y);
+	obs.body_entered.connect(hit_obs);
+	add_child(obs);
+	obstacles.append(obs);
 
 func remove_obs(obs):
-	obs.queue_free()
-	obstacles.erase(obs)
+	obs.queue_free();
+	obstacles.erase(obs);
 	
 func hit_obs(body):
 	if body.name == "Dino":
-		game_over()
+		lives -= 1
+		$Hearts.update_hearts_display(lives)
+		if lives <= 0:
+			game_over()
 		
 func remove_coin(coin):
 	coin.queue_free()
 	coins.erase(coin)
+		
 
 func show_score():
-	$HUD.get_node("ScoreLabel").text = "SCORE: " + str(score / SCORE_MODIFIER)
+	$HUD.get_node("ScoreLabel").text = "SCORE: " + str(int(score / SCORE_MODIFIER));
 	
 func show_coins():
-	$HUD.get_node("CoinLabel").text = "COINS: " + str(coin_manager.coins)
+	$HUD.get_node("CoinLabel").text = "COINS: " + str(coin_manager.coins);
 
 func check_high_score():
 	if score > high_score:
-		high_score = score
-		$HUD.get_node("HighScoreLabel").text = "HIGH SCORE: " + str(high_score / SCORE_MODIFIER)
+		high_score = score;
+	$HUD.get_node("HighScoreLabel").text = "HIGH SCORE: " + str(int(high_score / SCORE_MODIFIER));
 
 func adjust_difficulty():
-	difficulty = score / SPEED_MODIFIER
+	difficulty = score / DIFFICULTY_MODIFIER;
 	if difficulty > MAX_DIFFICULTY:
-		difficulty = MAX_DIFFICULTY
+		difficulty = MAX_DIFFICULTY;
+	print(difficulty, " ", score, " ", DIFFICULTY_MODIFIER)
 
 func game_over():
-	check_high_score()
-	get_tree().paused = true
-	game_running = false
-	$GameOver.show()
+	get_tree().paused = true;
+	game_running = false;
+	$GameOver.show();
