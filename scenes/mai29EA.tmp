@@ -77,26 +77,32 @@ position = Vector2(647, 472)
 script = ExtResource("10_74q5g")
 
 [node name="HeartsFull" type="TextureRect" parent="Hearts"]
-anchors_preset = 2
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 31.0
-offset_top = -60.9999
-offset_right = 64.0
-offset_bottom = -47.9999
+offset_left = -147.0
+offset_top = -79.9999
+offset_right = -114.0
+offset_bottom = -66.9999
+grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(3.095, 3.095)
 texture = ExtResource("10_g1g16")
 stretch_mode = 1
 
 [node name="HeartsEmpty" type="TextureRect" parent="Hearts"]
-anchors_preset = 2
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 31.0
-offset_top = -61.9999
-offset_right = 64.0
-offset_bottom = -48.9999
+offset_left = -147.0
+offset_top = -79.9999
+offset_right = -114.0
+offset_bottom = -66.9999
+grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(3.095, 3.095)
 texture = ExtResource("11_tomjp")
