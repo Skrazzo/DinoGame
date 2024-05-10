@@ -43,8 +43,8 @@ animations = [{
 size = Vector2(43, 51)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s8m3f"]
-radius = 32.0
-height = 84.0
+radius = 31.0
+height = 92.0
 
 [node name="Bird" type="Area2D"]
 script = ExtResource("1_sru60")

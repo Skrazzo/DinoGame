@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://v3lih7dwwimj"]
+[gd_scene load_steps=7 format=3 uid="uid://v3lih7dwwimj"]
 
 [ext_resource type="Texture2D" uid="uid://c3geptfawefln" path="res://assets/ShopAssets/backgroundshop 2.png" id="1_b3f7o"]
 [ext_resource type="Texture2D" uid="uid://d2jty5vpvpx3b" path="res://assets/ShopAssets/sign 2.png" id="2_yebcr"]
 [ext_resource type="FontFile" uid="uid://s15272omc2m3" path="res://assets/fonts/retro.ttf" id="3_wljbb"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6n74x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtmpn"]
 bg_color = Color(0.423529, 0.317647, 0.2, 1)
@@ -54,9 +52,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.721569)
+modulate = Color(1, 1, 1, 0.705882)
 self_modulate = Color(1, 1, 1, 0.854902)
-material = SubResource("ShaderMaterial_6n74x")
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
