@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bju4jxwr7a0pg"]
+[gd_scene load_steps=12 format=3 uid="uid://bju4jxwr7a0pg"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_d36gk"]
 [ext_resource type="PackedScene" uid="uid://bpkphu8qj137m" path="res://scenes/bg.tscn" id="1_qy3kl"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://lyf4a3sklk1o" path="res://scenes/hud.tscn" id="5_cgpie"]
 [ext_resource type="PackedScene" uid="uid://lotwuige1aee" path="res://scenes/game_over.tscn" id="6_6n2u1"]
 [ext_resource type="Script" path="res://scenes/UserDataHandler.gd" id="7_drti8"]
-[ext_resource type="PackedScene" uid="uid://dju4ybcvy1a5q" path="res://scenes/coin.tscn" id="7_kne81"]
 [ext_resource type="Script" path="res://scenes/coin_manager.gd" id="8_fmuii"]
 [ext_resource type="Script" path="res://scenes/Hearts.gd" id="10_74q5g"]
 [ext_resource type="Texture2D" uid="uid://bwg767l4g7mmo" path="res://assets/img/HealthUI_full.png" id="10_g1g16"]
@@ -51,27 +50,6 @@ process_mode = 2
 [node name="CoinManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("8_fmuii")
-
-[node name="Coin" parent="." instance=ExtResource("7_kne81")]
-position = Vector2(399, 468)
-
-[node name="Coin2" parent="." instance=ExtResource("7_kne81")]
-position = Vector2(440, 466)
-
-[node name="Coin3" parent="." instance=ExtResource("7_kne81")]
-position = Vector2(484, 469)
-
-[node name="Coin4" parent="." instance=ExtResource("7_kne81")]
-position = Vector2(529, 473)
-
-[node name="Coin5" parent="." instance=ExtResource("7_kne81")]
-position = Vector2(571, 473)
-
-[node name="Coin6" parent="." instance=ExtResource("7_kne81")]
-position = Vector2(607, 472)
-
-[node name="Coin7" parent="." instance=ExtResource("7_kne81")]
-position = Vector2(647, 472)
 
 [node name="Hearts" type="CanvasLayer" parent="."]
 script = ExtResource("10_74q5g")
