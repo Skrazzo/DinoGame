@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvq054tdl4knx"]
+[gd_scene load_steps=9 format=3 uid="uid://dn22y1w4alqmd"]
 
+[ext_resource type="Script" path="res://scenes/main_view.gd" id="1_0qsy6"]
 [ext_resource type="Texture2D" uid="uid://c3geptfawefln" path="res://assets/ShopAssets/backgroundshop 2.png" id="1_lh786"]
 [ext_resource type="FontFile" uid="uid://s15272omc2m3" path="res://assets/fonts/retro.ttf" id="2_5j314"]
 
@@ -45,6 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0qsy6")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.654902)
@@ -116,3 +118,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5ho3c")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lvd6n")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_0pq6u")
 text = "QUIT"
+
+[connection signal="pressed" from="TextureRect/GridContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="TextureRect/GridContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="TextureRect/GridContainer/QuitButton" to="." method="_on_quit_button_pressed"]
