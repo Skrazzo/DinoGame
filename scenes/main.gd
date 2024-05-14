@@ -128,7 +128,7 @@ func generate_obs():
 			add_obs(obs, obs_x, obs_y)
 
 		#coin generation
-		var num_coins = randi_range(0, 3)
+		var num_coins = randi_range(0, 5)
 		var spacing = 50
 		var start_x = obs_x_coin + 300
 		for x in range(num_coins):
