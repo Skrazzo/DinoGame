@@ -55,4 +55,8 @@ class User extends Authenticatable
     public function shop(){
         return $this->hasOne(\App\Models\Shop::class);
     }
+
+    public function stripe() {
+        return $this->hasMany(\App\Models\Stripe::class);
+    }
 }
