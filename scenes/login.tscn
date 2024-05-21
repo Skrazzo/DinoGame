@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bobev75gifjpl"]
+[gd_scene load_steps=12 format=3 uid="uid://bobev75gifjpl"]
 
+[ext_resource type="Script" path="res://scenes/login.gd" id="1_i41xy"]
 [ext_resource type="Texture2D" uid="uid://c3geptfawefln" path="res://assets/ShopAssets/backgroundshop 2.png" id="1_l14t5"]
 [ext_resource type="Texture2D" uid="uid://d2jty5vpvpx3b" path="res://assets/ShopAssets/sign 2.png" id="2_ep7x1"]
 [ext_resource type="FontFile" uid="uid://s15272omc2m3" path="res://assets/fonts/retro.ttf" id="3_qm118"]
@@ -43,6 +44,16 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qsta5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_af77d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkqat"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_color = Color(0.8, 0.8, 0.8, 0)
+border_blend = true
+
 [node name="Login" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -50,6 +61,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_i41xy")
 
 [node name="Background" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.721569)
@@ -163,3 +175,26 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_qm118")
 theme_override_styles/normal = SubResource("StyleBoxFlat_nhgme")
 text = "LOGIN"
+
+[node name="Register" type="Button" parent="Background/Login-border"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -52.0
+offset_right = 94.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.894118, 0.894118, 0.894118, 1)
+theme_override_colors/font_hover_color = Color(0.490196, 0.619608, 0.92549, 1)
+theme_override_fonts/font = ExtResource("3_qm118")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qsta5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_af77d")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dkqat")
+text = "Don't have an account?"
+
+[connection signal="pressed" from="Background/Login-border/Register" to="." method="_on_register_pressed"]

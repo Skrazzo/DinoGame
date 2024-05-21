@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://v3lih7dwwimj"]
+[gd_scene load_steps=11 format=3 uid="uid://v3lih7dwwimj"]
 
 [ext_resource type="Texture2D" uid="uid://c3geptfawefln" path="res://assets/ShopAssets/backgroundshop 2.png" id="1_b3f7o"]
+[ext_resource type="Script" path="res://scenes/register.gd" id="1_u78g7"]
 [ext_resource type="Texture2D" uid="uid://d2jty5vpvpx3b" path="res://assets/ShopAssets/sign 2.png" id="2_yebcr"]
 [ext_resource type="FontFile" uid="uid://s15272omc2m3" path="res://assets/fonts/retro.ttf" id="3_wljbb"]
 
@@ -43,6 +44,16 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fky86"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fpybp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55pwq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_color = Color(0.8, 0.8, 0.8, 0)
+border_blend = true
+
 [node name="Register" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -50,6 +61,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_u78g7")
 
 [node name="Background" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.705882)
@@ -173,3 +185,26 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_wljbb")
 theme_override_styles/normal = SubResource("StyleBoxFlat_8ij5l")
 text = "REGISTER"
+
+[node name="Login" type="Button" parent="Background/Login-border"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -118.0
+offset_top = -55.0
+offset_right = 122.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.894118, 0.894118, 0.894118, 1)
+theme_override_colors/font_hover_color = Color(0.490196, 0.619608, 0.92549, 1)
+theme_override_fonts/font = ExtResource("3_wljbb")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fky86")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fpybp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_55pwq")
+text = "Have an account?"
+
+[connection signal="pressed" from="Background/Login-border/Login" to="." method="_on_login_pressed"]
