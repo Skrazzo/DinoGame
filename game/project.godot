@@ -19,8 +19,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Utility="*res://Scripts/Utility.gd"
-UserData="*res://scenes/UserDataHandler.gd"
 InventorySchema="*res://Scripts/InventorySchema.gd"
+UserData="*res://Scripts/UserDataHandler.gd"
 
 [display]
 

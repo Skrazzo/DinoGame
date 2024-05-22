@@ -37,9 +37,9 @@ func _ready():
 func new_game():
 	#reset variables
 	score = 0;
-	coin_manager.coins = 0;
+	#coin_manager.coins = 0;
 	update_score();
-	show_coins();
+	#show_coins();
 	game_running = false;
 	get_tree().paused = false;
 	difficulty = 0;
@@ -79,7 +79,7 @@ func _process(delta):
 		#update score
 		score += speed;
 		update_score();
-		show_coins();
+		#show_coins();
 		
 		#update ground position
 		if $Camera2D.position.x - $Ground.position.x > screen_size.x * 1.5:
